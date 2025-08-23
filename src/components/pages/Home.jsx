@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaChevronDown } from "react-icons/fa"; // ✅ import the dropdown icon
-import ProductCard from "../Productcard";
+import { FaChevronDown } from "react-icons/fa"; 
+import ProductCard from "../ProductCard";
 import products from "../data/Products";
 import { SearchContext } from "../context/SearchContext";
 
