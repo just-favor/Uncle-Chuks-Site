@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+body{
+  
+}
+
+
+
+@media (max-width: 900px){
+  /* header{
+    padding: 10px;
+  }
+  .search-bar{
+    display: none;
+  }
+  .cart-icon{
+    border: none;
+    gap: 10px;
+    padding: 0;
+    width: 200px;
+  }
+  .mobile-src-btn{
+    display: block;
+  } */
+  .hero h2{
+    font-size: xx-large;
+  }
+  .productcard img{
+    width: 160px;
+    height: 100px;
+  }
+  .productcard{
+    height: 290px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .productcard h3{
+    font-size: 0.7rem;
+    margin: 0;
+    padding: 0;
+  }
+  .productcard p{
+    font-size: 0.6rem;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 1090px){
+
+}
