@@ -18,6 +18,7 @@ import Analytics from "./admin/Analytics";
 import AdminLogin from "./admin/AdminLogin";
 import PrivateRoute from "./admin/PrivateRoute";
 import TestFirestore from "./admin/TestFirestore";
+import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   const location = useLocation();
@@ -63,6 +64,7 @@ function App() {
         <Toaster position="right-bottom" reverseOrder={false} />
         {!hideHeaderFooter && <Footer />}
       </SearchProvider>
+      <WhatsAppButton />
     </div>
   );
 }
