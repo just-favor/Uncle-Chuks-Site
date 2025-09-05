@@ -26,13 +26,22 @@ function ProductCard({ product }) {
         </p>
       </Link>
 
-      {/* View Button */}
-      <Link
-        to={`/product/${product.id}`}
-        className="mt-2 text-center bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition"
-      >
-        View
-      </Link>
+      {/* View / Out of Stock Button */}
+      {product.stock === 0 ? (
+        <button
+          disabled
+          className="mt-2 text-center bg-gray-400 text-white px-4 py-2 rounded-lg cursor-not-allowed"
+        >
+          Out of Stock
+        </button>
+      ) : (
+        <Link
+          to={`/product/${product.id}`}
+          className="mt-2 text-center bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition"
+        >
+          View
+        </Link>
+      )}
     </div>
   );
 }

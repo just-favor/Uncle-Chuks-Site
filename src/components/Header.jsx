@@ -53,9 +53,6 @@ function Header() {
           <span className="text-sm sm:text-base">NGN</span>
         </div>
 
-        {/* Login */}
-        <button className="hidden sm:block text-sm sm:text-base">Login</button>
-
         {/* Cart */}
         <div className="relative">
           <FaShoppingCart

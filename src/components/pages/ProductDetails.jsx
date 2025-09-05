@@ -13,10 +13,18 @@ function ProductDetails() {
   const [selectedSize, setSelectedSize] = useState("");
 
   if (!product) {
-    return <h2 className="text-center text-xl sm:text-2xl mt-10">Product Not Found</h2>;
+    return (
+      <h2 className="text-center text-xl sm:text-2xl mt-10">
+        Product Not Found
+      </h2>
+    );
   }
 
   const handleAddToCart = () => {
+    if (product.stock === 0) {
+      toast.error("Product is out of stock ❌");
+      return;
+    }
     addToCart({ ...product, selectedSize: selectedSize || null });
     toast.success(`${product.name} added to cart ✅`);
   };
@@ -34,8 +42,17 @@ function ProductDetails() {
       {/* Product Info */}
       <div className="flex-1 text-center lg:text-left">
         <h2 className="text-2xl sm:text-4xl font-bold mb-4">{product.name}</h2>
-        <p className="text-base sm:text-lg text-gray-600 mb-6">{product.description}</p>
-        <p className="text-xl sm:text-2xl font-semibold mb-6">₦{product.price}</p>
+        <p className="text-base sm:text-lg text-gray-600 mb-4">{product.description}</p>
+        <p className="text-xl sm:text-2xl font-semibold mb-4">
+          ₦{product.price.toLocaleString()}
+        </p>
+
+        {/* Stock */}
+        <p className={`mb-6 font-medium ${
+          product.stock > 0 ? "text-green-600" : "text-red-600"
+        }`}>
+          {product.stock > 0 ? `In Stock: ${product.stock}` : "Out of Stock"}
+        </p>
 
         {/* Sizes if available */}
         {product.sizes && product.sizes.length > 0 && (
@@ -63,9 +80,14 @@ function ProductDetails() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
           <button
             onClick={handleAddToCart}
-            className="px-6 py-3 bg-black text-white rounded-lg transition cursor-pointer w-full sm:w-auto"
+            disabled={product.stock === 0}
+            className={`px-6 py-3 rounded-lg transition w-full sm:w-auto ${
+              product.stock === 0
+                ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+                : "bg-black text-white"
+            }`}
           >
-            Add to Cart
+            {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
           </button>
 
           <button
