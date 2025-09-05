@@ -60,7 +60,7 @@ function App() {
           <Route path="/test-firestore" element={<TestFirestore />} />
         </Routes>
 
-        <Toaster position="top-right" reverseOrder={false} />
+        <Toaster position="right-bottom" reverseOrder={false} />
         {!hideHeaderFooter && <Footer />}
       </SearchProvider>
     </div>

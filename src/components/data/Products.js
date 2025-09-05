@@ -108,6 +108,74 @@ const products = [
       image: "https://i.pinimg.com/736x/b9/a4/43/b9a4435887987c89f61fb96964db89e3.jpg",
       description: "Comfortable Suits",
       sizes: ["S", "M", "L", "XL", "XXL"]
+    },
+    {
+      id: 13,
+      name: "Formal Shoes",
+      price: 30000,
+      category: "Shoes",
+      image: "https://i.pinimg.com/1200x/9e/b1/73/9eb1737d5b3e4ea1167e6f5f9fdf66a1.jpg",
+      description: "Elegant formal shoes for special occasions.",
+      sizes: ["39", "40", "41", "42", "43", "44", "45"]
+    },
+    {
+      id: 14,
+      name: "Casual Handbag",
+      price: 20000,
+      category: "Bags",
+      image: "https://i.pinimg.com/1200x/22/49/91/2249914d869ca9b75b21c81af5b2989b.jpg",
+      description: "Trendy casual handbag for everyday use."
+    },
+    {
+      id: 15,
+      name: "Sports Watch",
+      price: 40000,
+      category: "Watches",
+      image: "https://i.pinimg.com/736x/33/dd/86/33dd860c51456a670f5fe1ecd583b84c.jpg",
+      description: "Durable sports watch with multiple features."
+    },
+    {
+      id: 16,
+      name: "Evening Gown",
+      price: 80000,
+      category: "Clothes",
+      image: "https://i.pinimg.com/736x/85/90/2c/85902c7928d02269503d903602eb7898.jpg",
+      description: "Stunning evening gown for special events.",
+      sizes: ["S", "M", "L", "XL", "XXL"]
+    },
+    {
+      id: 17,
+      name: "Casual Dress",
+      price: 30000,
+      category: "Clothes",
+      image: "https://i.pinimg.com/1200x/51/b5/81/51b581939a92b308f4a5e9cd7e017824.jpg",
+      description: "Comfortable casual dress for everyday wear.",
+      sizes: ["S", "M", "L", "XL", "XXL"]
+    },
+    {
+      id: 18,
+      name: "Leather Jacket",
+      price: 120000,
+      category: "Clothes",
+      image: "https://i.pinimg.com/1200x/7d/ef/3e/7def3e8c37e1837a1abe4b702888f996.jpg",
+      description: "Stylish leather jacket for a bold look.",
+      sizes: ["S", "M", "L", "XL", "XXL"]
+    },
+    {
+      id: 19,
+      name: "Digital Watch",
+      price: 15000,
+      category: "Watches",
+      image: "https://i.pinimg.com/1200x/aa/f1/e1/aaf1e1ac8eb1f41d09644dc589878832.jpg",
+      description: "Affordable digital watch with essential features."
+    },
+    {
+      id: 20,
+      name: "Travel Backpack",
+      price: 50000,
+      category: "Bags",
+      image: "https://i.pinimg.com/1200x/cf/4f/01/cf4f01a5dba40513a24e547ed618414b.jpg",
+      description: "Spacious travel backpack with multiple compartments."
     }
   
   ]
