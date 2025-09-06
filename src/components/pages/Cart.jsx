@@ -13,21 +13,26 @@ function Cart() {
 
   // ✅ WhatsApp Checkout Function
   const handleCheckout = () => {
-    const phoneNumber = "2348055003497"; // replace with your WhatsApp number (include country code, no "+" or spaces)
+    const phoneNumber = "2348100000000"; // 🔴 replace with your WhatsApp number
 
     const orderSummary = cartItems
       .map(
         (item, index) =>
-          `${index + 1}. ${item.name} (${item.qty} × ₦${item.price.toLocaleString()}) = ₦${(
+          `${index + 1}. ${item.name}${
+            item.selectedSize ? ` (Size: ${item.selectedSize})` : ""
+          } - ${item.qty} × ₦${item.price.toLocaleString()} = ₦${(
             item.price * item.qty
           ).toLocaleString()}`
       )
-      .join("%0A"); // line break in WhatsApp
+      .join("%0A");
 
     const message = `Hello, I'd like to place an order:%0A%0A${orderSummary}%0A%0ATotal: ₦${cartTotal.toLocaleString()}`;
     const url = `https://wa.me/${phoneNumber}?text=${message}`;
 
     window.open(url, "_blank");
+
+    // ✅ Clear cart after checkout
+    clearCart();
   };
 
   return (
@@ -61,6 +66,14 @@ function Cart() {
                 />
                 <div>
                   <h2 className="font-semibold text-lg">{item.name}</h2>
+
+                  {/* ✅ Show selected size if available */}
+                  {item.selectedSize && (
+                    <p className="text-sm text-gray-500">
+                      Size: {item.selectedSize}
+                    </p>
+                  )}
+
                   <p className="text-gray-600">₦{item.price.toLocaleString()}</p>
                 </div>
               </div>
@@ -105,13 +118,23 @@ function Cart() {
             <div className="flex gap-4 mt-4 sm:mt-0">
               <button
                 onClick={clearCart}
-                className="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600"
+                disabled={cartItems.length === 0}
+                className={`px-6 py-3 rounded-lg text-white transition ${
+                  cartItems.length === 0
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-red-500 hover:bg-red-600"
+                }`}
               >
                 Clear All
               </button>
               <button
                 onClick={handleCheckout}
-                className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700"
+                disabled={cartItems.length === 0}
+                className={`px-6 py-3 rounded-lg text-white transition ${
+                  cartItems.length === 0
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-green-600 hover:bg-green-700"
+                }`}
               >
                 Checkout with WhatsApp
               </button>
