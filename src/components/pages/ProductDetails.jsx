@@ -21,17 +21,18 @@ function ProductDetails() {
   }
 
   const handleAddToCart = () => {
-    if (product.stock === 0) {
-      toast.error("Product is out of stock ❌");
+    // ✅ Enforce size selection if product has sizes
+    if (product.sizes && product.sizes.length > 0 && !selectedSize) {
+      toast.error("Please select a size before adding to cart ❌");
       return;
     }
+
     addToCart({ ...product, selectedSize: selectedSize || null });
     toast.success(`${product.name} added to cart ✅`);
   };
 
   return (
     <div className="p-5 sm:p-10 flex flex-col lg:flex-row gap-8 lg:gap-12">
-      
       {/* Product Image */}
       <img
         src={product.image}
@@ -42,22 +43,19 @@ function ProductDetails() {
       {/* Product Info */}
       <div className="flex-1 text-center lg:text-left">
         <h2 className="text-2xl sm:text-4xl font-bold mb-4">{product.name}</h2>
-        <p className="text-base sm:text-lg text-gray-600 mb-4">{product.description}</p>
-        <p className="text-xl sm:text-2xl font-semibold mb-4">
-          ₦{product.price.toLocaleString()}
+        <p className="text-base sm:text-lg text-gray-600 mb-6">
+          {product.description}
         </p>
-
-        {/* Stock */}
-        <p className={`mb-6 font-medium ${
-          product.stock > 0 ? "text-green-600" : "text-red-600"
-        }`}>
-          {product.stock > 0 ? `In Stock: ${product.stock}` : "Out of Stock"}
+        <p className="text-xl sm:text-2xl font-semibold mb-6">
+          ₦{product.price}
         </p>
 
         {/* Sizes if available */}
         {product.sizes && product.sizes.length > 0 && (
           <div className="mb-6">
-            <h3 className="text-base sm:text-lg font-medium mb-2">Select Size:</h3>
+            <h3 className="text-base sm:text-lg font-medium mb-2">
+              Select Size:
+            </h3>
             <div className="flex flex-wrap justify-center lg:justify-start gap-3">
               {product.sizes.map((size, index) => (
                 <button
@@ -80,14 +78,9 @@ function ProductDetails() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
           <button
             onClick={handleAddToCart}
-            disabled={product.stock === 0}
-            className={`px-6 py-3 rounded-lg transition w-full sm:w-auto ${
-              product.stock === 0
-                ? "bg-gray-400 text-gray-700 cursor-not-allowed"
-                : "bg-black text-white"
-            }`}
+            className="px-6 py-3 bg-black text-white rounded-lg transition cursor-pointer w-full sm:w-auto"
           >
-            {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
+            Add to Cart
           </button>
 
           <button
