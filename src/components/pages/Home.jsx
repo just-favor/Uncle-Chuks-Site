@@ -53,10 +53,12 @@ function Home() {
   // Scroll to top of products
   const scrollToTop = () => {
     if (productsRef.current) {
-      productsRef.current.scrollIntoView({ behavior: "smooth" });
+      productsRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start", // ✅ forces it to align to the top
+      });
     }
   };
-
   const handlePageChange = (page) => {
     setCurrentPage(page);
     scrollToTop();

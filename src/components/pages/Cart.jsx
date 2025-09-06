@@ -11,6 +11,25 @@ function Cart() {
     cartTotal,
   } = useContext(CartContext);
 
+  // ✅ WhatsApp Checkout Function
+  const handleCheckout = () => {
+    const phoneNumber = "2348055003497"; // replace with your WhatsApp number (include country code, no "+" or spaces)
+
+    const orderSummary = cartItems
+      .map(
+        (item, index) =>
+          `${index + 1}. ${item.name} (${item.qty} × ₦${item.price.toLocaleString()}) = ₦${(
+            item.price * item.qty
+          ).toLocaleString()}`
+      )
+      .join("%0A"); // line break in WhatsApp
+
+    const message = `Hello, I'd like to place an order:%0A%0A${orderSummary}%0A%0ATotal: ₦${cartTotal.toLocaleString()}`;
+    const url = `https://wa.me/${phoneNumber}?text=${message}`;
+
+    window.open(url, "_blank");
+  };
+
   return (
     <div className="p-6 max-w-5xl mx-auto bg-gray-100 min-h-150">
       <h1 className="text-3xl font-bold mb-6">Your Cart</h1>
@@ -90,8 +109,11 @@ function Cart() {
               >
                 Clear All
               </button>
-              <button className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800">
-                Checkout
+              <button
+                onClick={handleCheckout}
+                className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700"
+              >
+                Checkout with WhatsApp
               </button>
             </div>
           </div>
