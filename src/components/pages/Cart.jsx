@@ -13,7 +13,7 @@ function Cart() {
 
   // ✅ WhatsApp Checkout Function
   const handleCheckout = () => {
-    const phoneNumber = "2348100000000"; // 🔴 replace with your WhatsApp number
+    const phoneNumber = "2348055003497"; 
 
     const orderSummary = cartItems
       .map(
